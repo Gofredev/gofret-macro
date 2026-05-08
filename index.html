@@ -9,302 +9,94 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{
-  font-family:'Inter',sans-serif;
-  color:#e8f4ff;
-  background:#050c18;
-  overflow-x:hidden;
-}
-
-canvas#bg{
-  position:fixed;
-  top:0;left:0;width:100%;height:100%;
-  pointer-events:none;
-  z-index:0;
-}
-
-.ripple-container{
-  position:fixed;inset:0;
-  pointer-events:none;overflow:hidden;
-  z-index:1;
-}
-
-.ripple{
-  position:absolute;border-radius:50%;
-  border:1px solid rgba(56,139,255,0.35);
-  transform:translate(-50%,-50%) scale(0);
-  animation:rippleOut 1.2s ease-out forwards;
-  pointer-events:none;
-}
-@keyframes rippleOut{
-  0%{transform:translate(-50%,-50%) scale(0);opacity:.8;}
-  100%{transform:translate(-50%,-50%) scale(4);opacity:0;}
-}
-
+body{font-family:'Inter',sans-serif;color:#e8f4ff;background:#050c18;overflow-x:hidden;}
+canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.ripple-container{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.ripple{position:absolute;border-radius:50%;border:1px solid rgba(56,139,255,0.35);transform:translate(-50%,-50%) scale(0);animation:rippleOut 1.2s ease-out forwards;pointer-events:none;}
+@keyframes rippleOut{0%{transform:translate(-50%,-50%) scale(0);opacity:.8;}100%{transform:translate(-50%,-50%) scale(4);opacity:0;}}
 .content{position:relative;z-index:2;}
-
-nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1.2rem 2.5rem;
-  border-bottom:1px solid rgba(56,139,255,0.15);
-  background:rgba(5,12,24,0.75);
-  backdrop-filter:blur(14px);
-  position:sticky;top:0;z-index:100;
-}
-
-.nav-logo{
-  display:flex;align-items:center;gap:10px;
-  font-family:'Space Mono',monospace;font-size:15px;font-weight:700;
-  color:#a8d4ff;letter-spacing:1px;
-  text-decoration:none;
-}
-
-.logo-icon{
-  width:34px;height:34px;border-radius:8px;
-  background:linear-gradient(135deg,#1a4a8a 0%,#2a6fd4 50%,#4a9fff 100%);
-  display:flex;align-items:center;justify-content:center;
-  font-size:15px;font-weight:900;color:#fff;
-  font-family:'Bebas Neue',sans-serif;
-  letter-spacing:0;
-  box-shadow:0 0 18px rgba(74,159,255,0.35);
-  position:relative;overflow:hidden;
-  flex-shrink:0;
-}
-.logo-icon::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 60%);
-  border-radius:8px;
-}
-
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;border-bottom:1px solid rgba(56,139,255,0.15);background:rgba(5,12,24,0.75);backdrop-filter:blur(14px);position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:#a8d4ff;letter-spacing:1px;text-decoration:none;}
+.logo-icon{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#1a4a8a 0%,#2a6fd4 50%,#4a9fff 100%);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#fff;font-family:'Bebas Neue',sans-serif;letter-spacing:0;box-shadow:0 0 18px rgba(74,159,255,0.35);position:relative;overflow:hidden;flex-shrink:0;}
+.logo-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 60%);border-radius:8px;}
 .nav-links{display:flex;gap:2rem;font-size:13px;color:rgba(168,212,255,0.6);}
 .nav-links a{color:inherit;text-decoration:none;cursor:pointer;transition:color .2s;letter-spacing:.3px;}
 .nav-links a:hover{color:#a8d4ff;}
-
-.nav-dl{
-  font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
-  padding:8px 18px;border-radius:7px;cursor:pointer;
-  background:linear-gradient(135deg,#1a4a8a,#2a6fd4);
-  color:#e8f4ff;border:1px solid rgba(74,159,255,0.4);
-  letter-spacing:.5px;transition:opacity .2s;
-  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
-}
+.nav-dl{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:8px 18px;border-radius:7px;cursor:pointer;background:linear-gradient(135deg,#1a4a8a,#2a6fd4);color:#e8f4ff;border:1px solid rgba(74,159,255,0.4);letter-spacing:.5px;transition:opacity .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
 .nav-dl:hover{opacity:.82;}
-
-.hero{
-  max-width:800px;margin:0 auto;
-  padding:6rem 2.5rem 3rem;
-}
-
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:'Space Mono',monospace;font-size:10px;
-  padding:5px 14px;border-radius:100px;
-  border:1px solid rgba(56,139,255,0.3);
-  color:rgba(168,212,255,0.7);
-  margin-bottom:2rem;
-  letter-spacing:1.5px;text-transform:uppercase;
-  background:rgba(26,74,138,0.2);
-  animation:fadeUp .6s ease both;
-}
+.hero{max-width:800px;margin:0 auto;padding:6rem 2.5rem 3rem;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:10px;padding:5px 14px;border-radius:100px;border:1px solid rgba(56,139,255,0.3);color:rgba(168,212,255,0.7);margin-bottom:2rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(26,74,138,0.2);animation:fadeUp .6s ease both;}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:#4a9fff;animation:blink 1.5s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-
-.hero-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(58px,10vw,96px);
-  line-height:.92;letter-spacing:2px;
-  margin-bottom:1.5rem;
-  animation:fadeUp .65s .08s ease both;
-}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(58px,10vw,96px);line-height:.92;letter-spacing:2px;margin-bottom:1.5rem;animation:fadeUp .65s .08s ease both;}
 .hero-title .line1{color:#e8f4ff;}
-.hero-title .line2{
-  background:linear-gradient(90deg,#4a9fff 0%,#7ec8ff 40%,#b3e0ff 80%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
+.hero-title .line2{background:linear-gradient(90deg,#4a9fff 0%,#7ec8ff 40%,#b3e0ff 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-title .line3{color:rgba(168,212,255,0.35);font-size:clamp(38px,6.5vw,66px);}
-
-.hero-sub{
-  font-size:16px;font-weight:300;line-height:1.85;
-  color:rgba(168,212,255,0.6);
-  max-width:500px;margin-bottom:2.5rem;
-  letter-spacing:.2px;
-  animation:fadeUp .65s .16s ease both;
-}
-
+.hero-sub{font-size:16px;font-weight:300;line-height:1.85;color:rgba(168,212,255,0.6);max-width:500px;margin-bottom:2.5rem;letter-spacing:.2px;animation:fadeUp .65s .16s ease both;}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .65s .24s ease both;}
-
-.btn-main{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:'Inter',sans-serif;font-weight:600;font-size:14px;
-  padding:13px 30px;border-radius:9px;cursor:pointer;
-  background:linear-gradient(135deg,#1a4a8a 0%,#2a6fd4 60%,#4a9fff 100%);
-  color:#e8f4ff;border:1px solid rgba(74,159,255,0.5);
-  letter-spacing:.3px;text-decoration:none;
-  transition:transform .12s, opacity .15s;
-}
+.btn-main{display:inline-flex;align-items:center;gap:9px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:13px 30px;border-radius:9px;cursor:pointer;background:linear-gradient(135deg,#1a4a8a 0%,#2a6fd4 60%,#4a9fff 100%);color:#e8f4ff;border:1px solid rgba(74,159,255,0.5);letter-spacing:.3px;text-decoration:none;transition:transform .12s,opacity .15s;}
 .btn-main:hover{transform:translateY(-2px);opacity:.9;}
-
-.stats-row{
-  max-width:800px;margin:2.5rem auto;padding:0 2.5rem;
-  animation:fadeUp .65s .3s ease both;
-}
-.stats-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  border:1px solid rgba(56,139,255,0.15);
-  border-radius:14px;overflow:hidden;
-  background:rgba(56,139,255,0.06);
-}
-.stat{
-  padding:1.4rem 1.5rem;
-  background:rgba(5,12,24,0.65);
-  text-align:center;
-}
-.stat-n{
-  font-family:'Space Mono',monospace;
-  font-size:28px;font-weight:700;
-  color:#4a9fff;line-height:1;margin-bottom:6px;
-}
+.btn-discord{display:inline-flex;align-items:center;gap:9px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;padding:13px 30px;border-radius:9px;cursor:pointer;background:rgba(88,101,242,0.15);color:#a8b4ff;border:1px solid rgba(88,101,242,0.35);letter-spacing:.3px;text-decoration:none;transition:transform .12s,background .15s,border-color .15s;}
+.btn-discord:hover{transform:translateY(-2px);background:rgba(88,101,242,0.25);border-color:rgba(88,101,242,0.6);}
+.stats-row{max-width:800px;margin:2.5rem auto;padding:0 2.5rem;animation:fadeUp .65s .3s ease both;}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid rgba(56,139,255,0.15);border-radius:14px;overflow:hidden;background:rgba(56,139,255,0.06);}
+.stat{padding:1.4rem 1.5rem;background:rgba(5,12,24,0.65);text-align:center;}
+.stat-n{font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:#4a9fff;line-height:1;margin-bottom:6px;}
 .stat-l{font-size:11px;color:rgba(168,212,255,0.4);letter-spacing:1.5px;text-transform:uppercase;font-weight:500;}
-
 .section{max-width:800px;margin:3.5rem auto;padding:0 2.5rem;}
+.sec-label{font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:2px;color:rgba(74,159,255,0.55);margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(56,139,255,0.25),transparent);}
 
-.sec-label{
-  font-family:'Space Mono',monospace;font-size:10px;
-  text-transform:uppercase;letter-spacing:2px;
-  color:rgba(74,159,255,0.55);
-  margin-bottom:1.25rem;
-  display:flex;align-items:center;gap:10px;
-}
-.sec-label::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(90deg,rgba(56,139,255,0.25),transparent);
-}
+/* ── CPS Limit Tester ── */
+.cps-tester{background:rgba(8,18,38,0.85);border:1px solid rgba(56,139,255,0.18);border-radius:16px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;}
+.tester-title{font-family:'Space Mono',monospace;font-size:11px;color:rgba(74,159,255,0.5);text-transform:uppercase;letter-spacing:2px;}
+.click-zone{width:100%;height:120px;border-radius:12px;border:2px dashed rgba(56,139,255,0.2);background:rgba(5,10,20,0.7);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .15s,background .15s;user-select:none;position:relative;overflow:hidden;}
+.click-zone:hover{border-color:rgba(74,159,255,0.4);background:rgba(10,25,50,0.8);}
+.click-zone:active{background:rgba(20,50,100,0.5);}
+.click-zone-txt{font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(168,212,255,0.3);letter-spacing:2px;pointer-events:none;}
+.click-ripple{position:absolute;border-radius:50%;background:rgba(74,159,255,0.3);transform:scale(0);animation:cRipple .5s ease-out forwards;pointer-events:none;}
+@keyframes cRipple{to{transform:scale(4);opacity:0;}}
 
-.demo-box{
-  background:rgba(8,18,38,0.85);
-  border:1px solid rgba(56,139,255,0.18);
-  border-radius:16px;padding:2rem;
-  display:flex;flex-direction:column;align-items:center;gap:1.5rem;
-}
+.tester-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;}
+.t-stat{background:rgba(5,12,24,0.8);border:1px solid rgba(56,139,255,0.1);border-radius:10px;padding:12px;text-align:center;}
+.t-stat-n{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:#4a9fff;line-height:1;margin-bottom:4px;}
+.t-stat-l{font-size:10px;color:rgba(168,212,255,0.35);text-transform:uppercase;letter-spacing:1px;}
 
-.arena{
-  width:100%;height:110px;border-radius:10px;
-  border:1px solid rgba(56,139,255,0.12);
-  background:rgba(5,10,20,0.7);
-  position:relative;overflow:hidden;
-}
-.arena-label{
-  position:absolute;top:8px;left:12px;
-  font-family:'Space Mono',monospace;font-size:9px;
-  color:rgba(74,159,255,0.4);text-transform:uppercase;letter-spacing:1px;
-}
-.ball{
-  position:absolute;width:30px;height:30px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,#6ab4ff,#1a5fb4 60%,#0a2a5a);
-  top:50%;transform:translateY(-50%);left:5%;
-  box-shadow:0 0 14px rgba(74,159,255,0.55);
-}
-.clash-fx{
-  position:absolute;right:80px;top:50%;transform:translateY(-50%);
-  width:28px;height:28px;border-radius:50%;
-  background:radial-gradient(#7ec8ff,transparent 70%);
-  opacity:0;
-}
-.clash-fx.show{animation:clashPop .4s ease forwards;}
-@keyframes clashPop{
-  0%{opacity:0;transform:translateY(-50%) scale(.3);}
-  40%{opacity:1;transform:translateY(-50%) scale(1.6);}
-  100%{opacity:0;transform:translateY(-50%) scale(1);}
-}
-
-.demo-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:64px;line-height:1;
-  color:#4a9fff;letter-spacing:2px;
-  transition:transform .06s;
-}
-.demo-num.pop{transform:scale(1.1);color:#7ec8ff;}
-
-.cps-label{
-  font-family:'Space Mono',monospace;font-size:12px;
-  color:rgba(168,212,255,0.45);
-  display:flex;align-items:center;gap:6px;
-}
-
-.bar-row{
-  width:100%;display:flex;gap:3px;align-items:flex-end;height:44px;
-}
-.bar{
-  flex:1;border-radius:2px;
-  background:rgba(56,139,255,0.1);
-  transition:height .1s;
-}
+.bar-row{width:100%;display:flex;gap:3px;align-items:flex-end;height:44px;}
+.bar{flex:1;border-radius:2px;background:rgba(56,139,255,0.1);transition:height .1s;}
 .bar.lit{background:#2a6fd4;}
+.bar.peak{background:#4a9fff;}
 
-.ctrl-row{display:flex;gap:10px;align-items:center;width:100%;}
-.cfg{
-  flex:1;padding:10px 14px;border-radius:8px;
-  background:rgba(5,12,24,0.8);
-  border:1px solid rgba(56,139,255,0.13);
-}
-.cfg label{display:block;font-size:10px;color:rgba(168,212,255,0.35);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;font-family:'Space Mono',monospace;}
-.cfg .val{font-family:'Space Mono',monospace;font-size:17px;font-weight:700;color:#a8d4ff;}
+.tester-controls{display:flex;gap:10px;width:100%;align-items:center;}
+.reset-btn{padding:10px 22px;border:1px solid rgba(56,139,255,0.2);border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;background:rgba(5,12,24,0.8);color:rgba(168,212,255,0.5);transition:all .15s;}
+.reset-btn:hover{border-color:rgba(74,159,255,0.4);color:#a8d4ff;}
+.duration-info{font-family:'Space Mono',monospace;font-size:11px;color:rgba(168,212,255,0.25);flex:1;text-align:right;}
 
-.start-btn{
-  padding:12px 24px;border:1px solid rgba(74,159,255,0.3);border-radius:8px;cursor:pointer;
-  font-family:'Inter',sans-serif;font-weight:600;font-size:14px;
-  background:linear-gradient(135deg,#1a4a8a,#2a6fd4);
-  color:#e8f4ff;white-space:nowrap;
-  transition:transform .08s,opacity .1s;
-}
-.start-btn:hover{opacity:.9;}
-.start-btn:active{transform:scale(.96);}
-
-.feat-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;
-  border:1px solid rgba(56,139,255,0.12);border-radius:14px;overflow:hidden;
-  background:rgba(56,139,255,0.05);
-}
-.feat{
-  padding:1.5rem 1.25rem;
-  background:rgba(5,12,24,0.65);
-  transition:background .2s;
-}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;border:1px solid rgba(56,139,255,0.12);border-radius:14px;overflow:hidden;background:rgba(56,139,255,0.05);}
+.feat{padding:1.5rem 1.25rem;background:rgba(5,12,24,0.65);transition:background .2s;}
 .feat:hover{background:rgba(26,74,138,0.18);}
 .feat-ico{font-size:20px;color:#2a6fd4;margin-bottom:10px;}
 .feat-t{font-size:14px;font-weight:600;color:#c8e4ff;margin-bottom:5px;letter-spacing:.2px;}
 .feat-d{font-size:12px;color:rgba(168,212,255,0.4);line-height:1.65;font-weight:300;}
-
 .steps{display:flex;flex-direction:column;}
 .step{display:flex;gap:1.5rem;padding:1.3rem 0;border-bottom:1px solid rgba(56,139,255,0.08);}
 .step:last-child{border-bottom:none;}
 .step-n{font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(74,159,255,0.18);min-width:32px;line-height:1;}
 .step-t{font-size:14px;font-weight:600;color:#c8e4ff;margin-bottom:4px;letter-spacing:.2px;}
 .step-d{font-size:13px;color:rgba(168,212,255,0.4);line-height:1.65;font-weight:300;}
-
 .faq-item{border-bottom:1px solid rgba(56,139,255,0.1);}
-.faq-q{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:.95rem 0;cursor:pointer;
-  font-size:13px;font-weight:500;color:#a8d4ff;letter-spacing:.2px;
-}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:.95rem 0;cursor:pointer;font-size:13px;font-weight:500;color:#a8d4ff;letter-spacing:.2px;}
 .faq-q i{font-size:16px;color:rgba(74,159,255,0.35);transition:transform .2s;}
 .faq-a{font-size:13px;font-weight:300;color:rgba(168,212,255,0.4);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;}
 .faq-item.open .faq-a{max-height:200px;padding-bottom:1rem;}
 .faq-item.open .faq-q i{transform:rotate(180deg);}
-
-footer{
-  max-width:800px;margin:3rem auto 0;padding:1.5rem 2.5rem 3rem;
-  border-top:1px solid rgba(56,139,255,0.1);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-}
+footer{max-width:800px;margin:3rem auto 0;padding:1.5rem 2.5rem 3rem;border-top:1px solid rgba(56,139,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .foot-brand{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#4a9fff;display:flex;align-items:center;gap:8px;}
 .foot-note{font-size:12px;color:rgba(168,212,255,0.25);letter-spacing:.3px;}
 .foot-links{display:flex;gap:1.2rem;}
 .foot-links a{font-size:12px;color:rgba(168,212,255,0.3);text-decoration:none;cursor:pointer;transition:color .2s;}
 .foot-links a:hover{color:#a8d4ff;}
-
 @media(max-width:600px){
   nav{padding:1rem 1.2rem;}
   .nav-links{display:none;}
@@ -313,6 +105,7 @@ footer{
   .stats-grid{grid-template-columns:1fr 1fr 1fr;}
   .stat-n{font-size:20px;}
   footer{padding:1.5rem 1.2rem 2rem;}
+  .tester-stats{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 </head>
@@ -333,7 +126,7 @@ footer{
     <a href="#how">how it works</a>
     <a href="#faq">faq</a>
   </div>
-  <a class="nav-dl" href="#download">
+  <a class="nav-dl" href="https://github.com/Gofredev/gofret-macro/releases/download/v1.0/BladeballClicker.exe" id="nav-dl">
     <i class="ti ti-download" style="font-size:13px;"></i>download
   </a>
 </nav>
@@ -347,38 +140,45 @@ footer{
   </div>
   <p class="hero-sub">Gofret Macro fires clicks at machine speed so you never lose a clash again. No install. No bloat. Just pure, instant domination.</p>
   <div class="cta-row">
-    <a class="btn-main" href="https://github.com/Gofredev/gofret-macro/releases/download/v1.0/GofretMacro.exe" id="download">
+    <a class="btn-main" href="https://github.com/Gofredev/gofret-macro/releases/download/v1.0/BladeballClicker.exe" id="download">
       <i class="ti ti-download"></i>Download free
+    </a>
+    <a class="btn-discord" href="https://discord.gg/DISCORD_LINKIN" target="_blank">
+      <i class="ti ti-brand-discord"></i>Get free key
     </a>
   </div>
 </div>
 
 <div class="stats-row">
   <div class="stats-grid">
-    <div class="stat"><div class="stat-n" id="dlCount">0</div><div class="stat-l">downloads</div></div>
+    <div class="stat"><div class="stat-n" id="dlCount">—</div><div class="stat-l">downloads</div></div>
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">free for now</div></div>
     <div class="stat"><div class="stat-n">&lt;1ms</div><div class="stat-l">click delay</div></div>
   </div>
 </div>
 
+<!-- CPS Limit Tester -->
 <div class="section">
-  <div class="sec-label">live demo</div>
-  <div class="demo-box">
-    <div class="arena">
-      <span class="arena-label">bladeball simulation</span>
-      <div class="ball" id="ball"></div>
-      <div class="clash-fx" id="flash"></div>
+  <div class="sec-label">cps limit tester</div>
+  <div class="cps-tester">
+    <div class="tester-title">Click as fast as you can — test your limits</div>
+
+    <div class="click-zone" id="clickZone">
+      <span class="click-zone-txt" id="clickZoneTxt">CLICK HERE TO START</span>
     </div>
-    <div class="demo-num" id="demoNum">0</div>
-    <div class="cps-label">
-      <i class="ti ti-bolt" style="font-size:13px;"></i>
-      <span id="cpsVal">0.0</span>&nbsp;clicks / sec
+
+    <div class="tester-stats">
+      <div class="t-stat"><div class="t-stat-n" id="tCps">0.0</div><div class="t-stat-l">CPS</div></div>
+      <div class="t-stat"><div class="t-stat-n" id="tPeak">0.0</div><div class="t-stat-l">Peak CPS</div></div>
+      <div class="t-stat"><div class="t-stat-n" id="tTotal">0</div><div class="t-stat-l">Total Clicks</div></div>
+      <div class="t-stat"><div class="t-stat-n" id="tTime">0.0s</div><div class="t-stat-l">Duration</div></div>
     </div>
-    <div class="bar-row" id="barRow"></div>
-    <div class="ctrl-row">
-      <div class="cfg"><label>speed</label><div class="val">150 <span style="font-size:11px;font-weight:400;color:rgba(168,212,255,.35)">c/s</span></div></div>
-      <div class="cfg"><label>total</label><div class="val" id="totalV">0</div></div>
-      <button class="start-btn" id="macroBtn">&#9654; Start</button>
+
+    <div class="bar-row" id="tBarRow"></div>
+
+    <div class="tester-controls">
+      <button class="reset-btn" id="resetBtn">↺ Reset</button>
+      <div class="duration-info" id="durationInfo">Click to begin your test</div>
     </div>
   </div>
 </div>
@@ -391,7 +191,7 @@ footer{
     <div class="feat"><div class="feat-ico"><i class="ti ti-keyboard"></i></div><div class="feat-t">Hotkey support</div><div class="feat-d">Start and stop instantly with a single key. Works in background.</div></div>
     <div class="feat"><div class="feat-ico"><i class="ti ti-feather"></i></div><div class="feat-t">Zero bloat</div><div class="feat-d">One tiny file. No install, no setup, no nonsense.</div></div>
     <div class="feat"><div class="feat-ico"><i class="ti ti-eye-off"></i></div><div class="feat-t">Clean interface</div><div class="feat-d">Open it, press a key, win. Nothing else to configure.</div></div>
-    <div class="feat"><div class="feat-ico"><i class="ti ti-shield-check"></i></div><div class="feat-t">Completely free</div><div class="feat-d">We’re building the best tool together. Access all premium features for free while we continue to optimize and grow.S</div></div>
+    <div class="feat"><div class="feat-ico"><i class="ti ti-shield-check"></i></div><div class="feat-t">Completely free</div><div class="feat-d">We're building the best tool together. Access all premium features for free while we continue to optimize and grow.</div></div>
   </div>
 </div>
 
@@ -421,160 +221,167 @@ footer{
   </div>
   <div class="foot-note">built for bladeball warriors</div>
   <div class="foot-links">
-    <a href="#download">download</a>
-    <a href="#">discord</a>
+    <a href="https://github.com/Gofredev/gofret-macro/releases/download/v1.0/BladeballClicker.exe">download</a>
+    <a href="https://discord.gg/DISCORD_LINKIN" target="_blank">discord</a>
   </div>
 </footer>
 
 </div>
 
 <script>
+// ─── Background ───────────────────────────────────────────────────────────────
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d');
 let W, H, mouse = {x:.5, y:.5};
 const pts = [];
-
-function resize(){
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-
-function initPts(){
-  pts.length = 0;
-  for(let i=0;i<65;i++){
-    pts.push({
-      x:Math.random()*W, y:Math.random()*H,
-      vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3,
-      r:Math.random()*1.5+.5, a:Math.random()
-    });
-  }
-}
-
+function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+function initPts(){ pts.length=0; for(let i=0;i<65;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.5,a:Math.random()}); }
 function drawBg(){
-  ctx.clearRect(0,0,W,H);
-  ctx.fillStyle='#050c18';
-  ctx.fillRect(0,0,W,H);
-
-  const gx=mouse.x*W, gy=mouse.y*H;
-  const g1=ctx.createRadialGradient(gx,gy,0,gx,gy,W*.65);
-  g1.addColorStop(0,'rgba(30,80,160,0.2)');
-  g1.addColorStop(.4,'rgba(10,30,70,0.1)');
-  g1.addColorStop(1,'rgba(5,12,24,0)');
+  ctx.clearRect(0,0,W,H); ctx.fillStyle='#050c18'; ctx.fillRect(0,0,W,H);
+  const gx=mouse.x*W,gy=mouse.y*H,g1=ctx.createRadialGradient(gx,gy,0,gx,gy,W*.65);
+  g1.addColorStop(0,'rgba(30,80,160,0.2)'); g1.addColorStop(.4,'rgba(10,30,70,0.1)'); g1.addColorStop(1,'rgba(5,12,24,0)');
   ctx.fillStyle=g1; ctx.fillRect(0,0,W,H);
-
   const g2=ctx.createRadialGradient(W*.15,H*.85,0,W*.15,H*.85,W*.5);
-  g2.addColorStop(0,'rgba(15,50,120,0.1)');
-  g2.addColorStop(1,'rgba(5,12,24,0)');
+  g2.addColorStop(0,'rgba(15,50,120,0.1)'); g2.addColorStop(1,'rgba(5,12,24,0)');
   ctx.fillStyle=g2; ctx.fillRect(0,0,W,H);
-
-  pts.forEach(p=>{
-    p.x+=p.vx; p.y+=p.vy;
-    if(p.x<0)p.x=W; if(p.x>W)p.x=0;
-    if(p.y<0)p.y=H; if(p.y>H)p.y=0;
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(74,159,255,${p.a*.35})`;
-    ctx.fill();
-  });
-
-  pts.forEach((a,i)=>{
-    pts.slice(i+1).forEach(b=>{
-      const d=Math.hypot(a.x-b.x,a.y-b.y);
-      if(d<130){
-        ctx.beginPath();
-        ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
-        ctx.strokeStyle=`rgba(42,111,212,${(1-d/130)*.14})`;
-        ctx.lineWidth=.5; ctx.stroke();
-      }
-    });
-  });
+  pts.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=`rgba(74,159,255,${p.a*.35})`; ctx.fill(); });
+  pts.forEach((a,i)=>{ pts.slice(i+1).forEach(b=>{ const d=Math.hypot(a.x-b.x,a.y-b.y); if(d<130){ ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.strokeStyle=`rgba(42,111,212,${(1-d/130)*.14})`; ctx.lineWidth=.5; ctx.stroke(); } }); });
   requestAnimationFrame(drawBg);
 }
-
 resize(); initPts(); drawBg();
 window.addEventListener('resize',()=>{ resize(); initPts(); });
 window.addEventListener('mousemove',e=>{
-  mouse.x=e.clientX/window.innerWidth;
-  mouse.y=e.clientY/window.innerHeight;
-  const rc=document.getElementById('rippleCont');
-  const rip=document.createElement('div');
-  rip.className='ripple';
-  rip.style.left=e.clientX+'px';
-  rip.style.top=e.clientY+'px';
-  rip.style.width=rip.style.height='80px';
-  rc.appendChild(rip);
-  setTimeout(()=>rip.remove(),1300);
+  mouse.x=e.clientX/window.innerWidth; mouse.y=e.clientY/window.innerHeight;
+  const rc=document.getElementById('rippleCont'),rip=document.createElement('div');
+  rip.className='ripple'; rip.style.left=e.clientX+'px'; rip.style.top=e.clientY+'px'; rip.style.width=rip.style.height='80px';
+  rc.appendChild(rip); setTimeout(()=>rip.remove(),1300);
 });
 
-const barRow=document.getElementById('barRow');
-const BARS=22;
-for(let i=0;i<BARS;i++){
-  const b=document.createElement('div');
-  b.className='bar'; b.style.height='8px';
-  barRow.appendChild(b);
+// ─── Download Counter (jsonbin.io) ────────────────────────────────────────────
+const BIN_ID  = '69fd96f2250b1311c31e5560';
+const API_KEY = '$2a$10$qQzKnh7wiZThoDQPj.L8q.pKVVkprtRDzV8oWcyeZrm9G/Zb48kbO';
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const HEADERS = { 'Content-Type':'application/json', 'X-Master-Key': API_KEY };
+
+async function getDownloads(){
+  try {
+    const r = await fetch(BIN_URL+'/latest', { headers: HEADERS });
+    const d = await r.json();
+    return d.record.downloads;
+  } catch(e){ return null; }
 }
 
-let count=0,running=false,intvl=null,recent=[],barIdx=0,bh=new Array(BARS).fill(8),ballState='idle';
-const demoNum=document.getElementById('demoNum');
-const cpsEl=document.getElementById('cpsVal');
-const totalEl=document.getElementById('totalV');
-const macroBtn=document.getElementById('macroBtn');
-const ball=document.getElementById('ball');
-const flash=document.getElementById('flash');
-
-let dlVal=0;
-const dlEl=document.getElementById('dlCount');
-const dlIntvl=setInterval(()=>{
-  dlVal=Math.min(dlVal+220,12847);
-  dlEl.textContent=dlVal.toLocaleString();
-  if(dlVal>=12847)clearInterval(dlIntvl);
-},30);
-
-function triggerClash(){
-  if(ballState!=='idle')return;
-  ballState='fly';
-  ball.style.transition='left .3s ease-in';
-  ball.style.left='82%';
-  setTimeout(()=>{
-    flash.classList.add('show');
-    setTimeout(()=>flash.classList.remove('show'),450);
-    ball.style.transition='left .28s ease-out';
-    ball.style.left='5%';
-    setTimeout(()=>ballState='idle',380);
-  },310);
+async function incrementDownloads(){
+  try {
+    const current = await getDownloads();
+    if(current === null) return;
+    await fetch(BIN_URL, {
+      method: 'PUT',
+      headers: HEADERS,
+      body: JSON.stringify({ downloads: current + 1 })
+    });
+  } catch(e){}
 }
 
-function click(){
-  count++; demoNum.textContent=count; totalEl.textContent=count;
-  demoNum.classList.add('pop'); setTimeout(()=>demoNum.classList.remove('pop'),70);
-  const now=Date.now(); recent.push(now);
-  recent=recent.filter(t=>now-t<1000);
-  const cps=recent.length; cpsEl.textContent=cps.toFixed(1);
-  const bars=barRow.querySelectorAll('.bar');
-  bh[barIdx]=Math.min(44,8+cps*2);
-  bars.forEach((b,i)=>{b.style.height=bh[i]+'px';b.classList.toggle('lit',i===barIdx);});
-  barIdx=(barIdx+1)%BARS;
-  if(Math.random()<.12)triggerClash();
-}
-
-macroBtn.addEventListener('click',()=>{
-  if(!running){
-    running=true; macroBtn.textContent='⏹ Stop';
-    macroBtn.style.background='rgba(26,74,138,0.4)';
-    intvl=setInterval(click,95);
-  } else {
-    running=false; macroBtn.textContent='▶ Start';
-    macroBtn.style.background='';
-    clearInterval(intvl); recent=[]; cpsEl.textContent='0.0';
+async function initCounter(){
+  const val = await getDownloads();
+  if(val !== null){
+    document.getElementById('dlCount').textContent = val.toLocaleString();
   }
+}
+initCounter();
+
+// Download butonlarına tıklanınca sayacı artır
+document.querySelectorAll('#download, #nav-dl, .foot-links a[href*="releases"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    incrementDownloads().then(() => {
+      getDownloads().then(val => {
+        if(val !== null) document.getElementById('dlCount').textContent = val.toLocaleString();
+      });
+    });
+  });
 });
 
+// ─── CPS Limit Tester ─────────────────────────────────────────────────────────
+const BARS = 24;
+const tBarRow = document.getElementById('tBarRow');
+for(let i=0;i<BARS;i++){
+  const b = document.createElement('div');
+  b.className = 'bar'; b.style.height = '8px';
+  tBarRow.appendChild(b);
+}
+
+let tClicks=[], tTotal=0, tPeakCps=0, tStartTime=null, tBarIdx=0, tBh=new Array(BARS).fill(8);
+const clickZone   = document.getElementById('clickZone');
+const clickZoneTxt= document.getElementById('clickZoneTxt');
+const tCpsEl      = document.getElementById('tCps');
+const tPeakEl     = document.getElementById('tPeak');
+const tTotalEl    = document.getElementById('tTotal');
+const tTimeEl     = document.getElementById('tTime');
+const durationInfo= document.getElementById('durationInfo');
+let tInterval     = null;
+
+function resetTester(){
+  tClicks=[]; tTotal=0; tPeakCps=0; tStartTime=null; tBarIdx=0; tBh=new Array(BARS).fill(8);
+  tCpsEl.textContent='0.0'; tPeakEl.textContent='0.0'; tTotalEl.textContent='0'; tTimeEl.textContent='0.0s';
+  durationInfo.textContent='Click to begin your test';
+  clickZoneTxt.textContent='CLICK HERE TO START';
+  const bars = tBarRow.querySelectorAll('.bar');
+  bars.forEach(b=>{ b.style.height='8px'; b.classList.remove('lit','peak'); });
+  clearInterval(tInterval); tInterval=null;
+}
+
+function updateTesterUI(){
+  const now = Date.now();
+  tClicks = tClicks.filter(t => now-t < 1000);
+  const cps = tClicks.length;
+  if(cps > tPeakCps) tPeakCps = cps;
+  const elapsed = tStartTime ? ((now - tStartTime)/1000).toFixed(1) : '0.0';
+
+  tCpsEl.textContent  = cps.toFixed(1);
+  tPeakEl.textContent = tPeakCps.toFixed(1);
+  tTotalEl.textContent= tTotal;
+  tTimeEl.textContent = elapsed+'s';
+  durationInfo.textContent = `${tTotal} clicks in ${elapsed}s`;
+
+  const bars = tBarRow.querySelectorAll('.bar');
+  tBh[tBarIdx] = Math.min(44, 8 + cps * 2.5);
+  bars.forEach((b,i)=>{
+    b.style.height = tBh[i]+'px';
+    b.classList.remove('lit','peak');
+    if(i === tBarIdx) b.classList.add(tBh[i] >= 40 ? 'peak' : 'lit');
+  });
+  tBarIdx = (tBarIdx+1) % BARS;
+}
+
+clickZone.addEventListener('click', e => {
+  if(!tStartTime){
+    tStartTime = Date.now();
+    clickZoneTxt.textContent = 'KEEP CLICKING!';
+    tInterval = setInterval(updateTesterUI, 100);
+  }
+  tTotal++;
+  tClicks.push(Date.now());
+
+  // ripple efekti
+  const rect = clickZone.getBoundingClientRect();
+  const rip = document.createElement('div');
+  rip.className = 'click-ripple';
+  rip.style.width = rip.style.height = '60px';
+  rip.style.left = (e.clientX - rect.left - 30)+'px';
+  rip.style.top  = (e.clientY - rect.top  - 30)+'px';
+  clickZone.appendChild(rip);
+  setTimeout(()=>rip.remove(), 500);
+});
+
+document.getElementById('resetBtn').addEventListener('click', resetTester);
+
+// ─── FAQ ──────────────────────────────────────────────────────────────────────
 document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click',()=>{
-    const item=q.parentElement;
-    const was=item.classList.contains('open');
+    const item=q.parentElement, was=item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
-    if(!was)item.classList.add('open');
+    if(!was) item.classList.add('open');
   });
 });
 </script>
